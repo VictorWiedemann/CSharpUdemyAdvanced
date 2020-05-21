@@ -51,7 +51,56 @@ namespace CSharpUdemyAdvanced
 
             photoProcessor.Process("c", filterHandler);
             */
+
+
+
+            //Lambda Expressions
+            /*
+            //args => expression (read as Arguments goes to Expression)
+            //number => number * number;
+
+            //equiv statements:
+            //static int Square(int number)
+            //{
+            //  return number*number
+            //}
+            static int Square(int number) => number * number;
+            Func<int, int> squareLambda = number => number * number;
+            Console.WriteLine(squareLambda(5));
+            Console.WriteLine(Square(5));
+
+
+            const int factor = 5;
+
+            Func<int, int> multiplier = n => n * factor;
+            Console.WriteLine($"{multiplier(3)} multiplier value");
+
+
+            var books = new BookRepository().GetBooks();
+
+            //input here is a predicate?
+
+            //replace the below lines of:
+            //        static bool IsCheaperThan10Dollars(Book book)
+            //{
+            //    return book.Price < 10;
+            //}
+            //with lambda
+            //book
+
+            //var cheapbooks = books.FindAll(IsCheaperThan10Dollars);
+            //with book => book.Price < 10
+            var cheapbooks = books.FindAll(book => book.Price < 10);
+
+
+            foreach (var book in cheapbooks)
+            {
+                Console.WriteLine($"{book.Title} is cheaper than 10 dollars");
+            }
+
+            */
         }
+
 
 
     }
