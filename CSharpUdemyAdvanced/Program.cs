@@ -205,6 +205,11 @@ namespace CSharpUdemyAdvanced
             dynamic b = 5;
             //siunce a and b are dynamic, this forces c to be dynamic.
             var c = a + b;
+
+
+            int i = 5;
+            dynamic d = i;//d is dynamic, but currently type int
+            long l = d; //works since you can cast an int to a long
         }
     }
 }
