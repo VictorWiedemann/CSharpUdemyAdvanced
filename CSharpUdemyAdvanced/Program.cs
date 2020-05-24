@@ -140,6 +140,49 @@ namespace CSharpUdemyAdvanced
             */
 
 
+
+
+
+            //Nullable types
+            //value types cannot be null
+            //useful for databases, like birthdays
+            // cannot do this:
+            // DateTime data = null;
+            
+            DateTime? date = null;
+
+            Console.WriteLine("get value or default: " + date.GetValueOrDefault()); // day 1, month 1, year 0001
+            Console.WriteLine("check if it has value: " + date.HasValue); // false
+            //Console.WriteLine("get the value: " + date.Value); // null error
+
+
+            //cannot put a nullable DateTime into a regular DateTime
+            //DateTime date2 = date;
+
+            //so we must do some better code:
+            DateTime date2 = date.GetValueOrDefault();
+            Console.WriteLine(date2);
+
+            //can easily make a new nullable type from an old one
+            DateTime? date3 = date;
+            DateTime? date4 = date2;
+
+            DateTime date5;
+
+
+            //Instead of doing this:
+            if (date != null)
+                date5 = date.GetValueOrDefault();
+            else
+                date5 = DateTime.Today;
+
+            //or
+            DateTime date6 = (date != null) ? date.GetValueOrDefault() : DateTime.Today;
+            
+            //you can do this:
+            DateTime date7 = date ?? DateTime.Today;
+
+
         }
     }
 }
