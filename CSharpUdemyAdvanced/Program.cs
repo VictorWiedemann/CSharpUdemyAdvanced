@@ -145,6 +145,7 @@ namespace CSharpUdemyAdvanced
 
             //Nullable types
             //value types cannot be null
+            /*
             //useful for databases, like birthdays
             // cannot do this:
             // DateTime data = null;
@@ -181,8 +182,29 @@ namespace CSharpUdemyAdvanced
             
             //you can do this:
             DateTime date7 = date ?? DateTime.Today;
+            */
 
 
+
+
+
+
+            //Dynamic 
+            //dynamic excelObject = "victor";
+            //compile time error if excelObject is not dynamic.
+            //excelObject.Optimize();
+
+            //this changes type
+            dynamic thing = "victor";
+            Console.WriteLine(thing);
+            thing = 10;
+            Console.WriteLine(thing);
+
+
+            dynamic a = 10;
+            dynamic b = 5;
+            //siunce a and b are dynamic, this forces c to be dynamic.
+            var c = a + b;
         }
     }
 }
