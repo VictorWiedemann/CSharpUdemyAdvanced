@@ -99,6 +99,22 @@ namespace CSharpUdemyAdvanced
             }
 
             */
+
+
+            //Events
+            //events are a pub/sub model
+
+            var video = new Video() { Title = "Video 1" };
+            var videoEncoder = new VideoEncoder(); // publisher
+            var mailService = new MailService(); //subscriber
+            var messageService = new MessageService(); //subscriber 2
+
+            //Here is how to do the Event subscription
+            videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
+            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+
+            videoEncoder.Encode(video); 
+
         }
 
 
