@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using CSharpUdemyAdvanced;
 
@@ -103,7 +105,7 @@ namespace CSharpUdemyAdvanced
 
             //Events
             //events are a pub/sub model
-
+            /*
             var video = new Video() { Title = "Video 1" };
             var videoEncoder = new VideoEncoder(); // publisher
             var mailService = new MailService(); //subscriber
@@ -114,11 +116,31 @@ namespace CSharpUdemyAdvanced
             videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
 
             videoEncoder.Encode(video); 
+            */
+
+
+
+
+
+
+            //Extension Methods
+            //most likely only using them and not creating them
+            /*
+            string post =
+                "this is supposed to be a very long blog post ad;lfkja;lksdfkl;ajdsf;lkjasdlfj;laksdjfl;kajsdfkl;jasdl;kfja;lksdjf;lkasjfkalsdf...";
+            var shortenedPost = post.Shorten(5);
+            Console.WriteLine(shortenedPost);
+
+
+
+            //here is a Microsoft generated Extension Methods using IEnumerable
+            IEnumerable<int> numbers = new List<int>() { 1,5,3,10,2,18};
+            var max = numbers.Max();
+            Console.WriteLine(max);
+            */
+
 
         }
-
-
-
     }
 }
 
