@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using CSharpUdemyAdvanced;
 
@@ -190,6 +192,7 @@ namespace CSharpUdemyAdvanced
 
 
             //Dynamic 
+            /*
             //dynamic excelObject = "victor";
             //compile time error if excelObject is not dynamic.
             //excelObject.Optimize();
@@ -210,6 +213,102 @@ namespace CSharpUdemyAdvanced
             int i = 5;
             dynamic d = i;//d is dynamic, but currently type int
             long l = d; //works since you can cast an int to a long
+            */
+
+
+
+
+
+
+
+
+
+
+            //Exception Handling
+            //global error catching
+            /*
+            var streamReader = new StreamReader(@"C:\Users\kirbo\Documents\code_projects\CSharpUdemy\txt.txt");
+            try
+            {
+                int? thing2 = null;
+                var calc = new Calculator();
+                var value = calc.Divide(1, 0);
+
+            }
+            catch (DivideByZeroException ex) // you can pick specific exceptions and get more and more broad from there
+            {
+                Console.WriteLine("divide by 0 exeption found");
+            }
+            catch (ArithmeticException ex) // one level up from DivideByZero
+            {
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("unknown error: " + e);
+            }
+            finally
+            {
+                //IDisposable is a interface that allows for some data to be grabbed by the garbage collector
+
+            }
+            */
+
+
+            /*
+            //initalize so the streamReader can be seen by the finally block. Useful maybe?
+            StreamReader streamReader = null;
+            try
+            {
+                //if file doesn't exist, this would throw an error
+                streamReader = new StreamReader(@"C:\Users\kirbo\Documents\code_projects\CSharpUdemy\txt.txt");
+                var content = streamReader.ReadToEnd();
+                throw new Exception("oops");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("unexpected error" + ex);
+            }
+            finally
+            {
+                //If you do not use this, the file will be open for as long as the program is open.
+                //also check to see if already null and closed. If not, we will take care of it here.
+                if(streamReader != null)
+                    streamReader.Dispose();
+            }
+            */
+            /*
+            try
+            {
+                //cleaner way of the above code is with the using keyword so we don't need that finally
+                using (var streamReader = new StreamReader(@"C:\Users\kirbo\Documents\code_projects\CSharpUdemy\txt.txt"))
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            */
+
+
+            //create custom exceptions
+
+            try
+            {
+                var api = new YouTubeApi();
+                api.GetVideos("test");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("could not grab the videos from YouTube");
+                //throw;
+            }
+
+
+
         }
     }
 }
