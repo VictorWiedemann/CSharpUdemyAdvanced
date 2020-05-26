@@ -13,7 +13,9 @@ namespace CSharpUdemyAdvanced
             {
                 new Book() {Title = "Title1", Price = 5},
                 new Book() {Title = "Title2", Price = 7},
-                new Book() {Title = "Title3", Price = 17}
+                new Book() {Title = "Title2", Price = 17},
+                new Book() {Title = "ADO.NET Step by Step", Price = 5},
+                new Book() {Title = "ASP.NET MVC", Price = 2}
             };
         }
     }

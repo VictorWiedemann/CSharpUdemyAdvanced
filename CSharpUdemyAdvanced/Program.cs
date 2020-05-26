@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
+using System.Threading.Channels;
 using CSharpUdemyAdvanced;
 
 namespace CSharpUdemyAdvanced
@@ -295,7 +297,7 @@ namespace CSharpUdemyAdvanced
 
 
             //create custom exceptions
-
+            /*
             try
             {
                 var api = new YouTubeApi();
@@ -306,8 +308,106 @@ namespace CSharpUdemyAdvanced
                 Console.WriteLine("could not grab the videos from YouTube");
                 //throw;
             }
+            */
 
 
+
+
+
+
+
+
+
+
+
+            //LINQ
+            var books = new BookRepository().GetBooks();
+
+            //without LINQ
+            var cheapSlowBooks = new List<Book>();
+            foreach (var book in books)
+            {
+                if (book.Price < 10)
+                {
+                    cheapSlowBooks.Add(book);
+                }
+            }
+
+            //line below will filter out the books with Where
+            //then it will order them alphabetically by title
+            var cheapBooks = books.Where(b => b.Price < 10).OrderBy(b => b.Title);
+
+            var cheapBookTitles = cheapBooks.Select(b => b.Title);
+
+
+            //LINQ Extension Methods
+            var formattedCheapBooks = books
+                .Where(b => b.Price < 10)
+                .OrderBy(b => b.Title)
+                .Select(b => b.Title);
+
+
+            //LINQ Query Operators
+            var cheaperbooks =
+                from b in books
+                where b.Price < 5
+                orderby b.Title
+                select b;
+
+            foreach (var book in cheapBooks)
+                Console.WriteLine("book name: " + book.Title + " at " + book.Price);
+
+            foreach (var book in cheapBookTitles)
+                Console.WriteLine("book title only: " + book);
+
+            foreach (var book in cheaperbooks)
+            {
+                Console.WriteLine("Cheaper books: " + book.Title);
+            }
+
+
+
+
+
+            //.Single will return error in the case that the title does not exist
+            //.SingleOrDefault returns null if the title does not exist
+            var aspBook = books.SingleOrDefault(b => b.Title == "ASP.NET MVC");
+
+            Console.WriteLine("Single Book: " + aspBook.Title);
+
+            var firstBook = books.First(b => b.Title == "Title2");
+
+            Console.WriteLine("first Book: " + firstBook.Title + " with price " + firstBook.Price);
+
+
+            var lastBook = books.LastOrDefault(b => b.Title == "Title2");
+
+            Console.WriteLine("last Book: " + lastBook.Title + " with price " + lastBook.Price);
+            Console.WriteLine();
+
+
+            //skips the first 2 entries then grabs the next 3
+            var groupOfBooks = books.Skip(2).Take(3);
+
+            foreach(var book in groupOfBooks)
+            {
+                Console.WriteLine(book.Title);
+            }
+
+            var count = books.Count();
+            Console.WriteLine("num of books is: " + count);
+
+            //Gets the max value of a list
+            var maxPrice = books.Max(b => b.Price);
+            Console.WriteLine("max Price is: " + maxPrice);
+
+            //also minprice
+            //to lazy to write
+
+            var subtotal = books.Sum(b => b.Price);
+            var total = (float)subtotal * 1.12f;
+            Console.WriteLine("Subtotal is: " + subtotal);
+            Console.WriteLine("total is: " + total);
 
         }
     }
