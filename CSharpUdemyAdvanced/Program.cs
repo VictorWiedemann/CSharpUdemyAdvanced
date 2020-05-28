@@ -321,6 +321,7 @@ namespace CSharpUdemyAdvanced
 
 
             //LINQ
+            /*
             var books = new BookRepository().GetBooks();
 
             //without LINQ
@@ -408,12 +409,19 @@ namespace CSharpUdemyAdvanced
             var total = (float)subtotal * 1.12f;
             Console.WriteLine("Subtotal is: " + subtotal);
             Console.WriteLine("total is: " + total);
+            */
 
+
+
+
+
+
+
+            //Asynchronous Programming
+            //go to Async project
         }
     }
 }
-
-
 
 
 //some additional types of T:
